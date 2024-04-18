@@ -32,7 +32,7 @@ export const Home: Component = () => {
               <li
                 onClick={() => navigate(`/detail?id=${hero.ename}&name=${hero.cname}`)}
                 class="flex items-center gap-8 bg-layer border border-gray/4 rounded-8 p-8 cursor-pointer hover:(bg-layer/60) transition animate-in animate-backwards fade-in slide-in-bottom-4"
-                style={{ 'animation-delay': `${idx() * 0.03}s` }}
+                style={{ 'animation-delay': `${idx() * 0.005}s` }}
               >
                 <img class="w-40 rounded-full select-none animate-blur" src={hero.iconUrl} alt={hero.cname} loading="lazy" />
                 <p class="flex flex-col">
