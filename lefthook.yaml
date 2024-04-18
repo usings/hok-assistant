@@ -1,0 +1,19 @@
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#
+skip_output:
+  - meta
+  - skips
+  - execution
+
+pre-commit:
+  commands:
+    lint commit codes:
+      glob: '*.{js,jsx,ts,tsx}'
+      run: pnpm eslint {staged_files} --fix
+
+commit-msg:
+  commands:
+    lint commit message:
+      run: pnpm commitlint --edit {1}

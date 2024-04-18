@@ -1,0 +1,7 @@
+.animate-blur {
+  animation: blur 0.2s ease;
+}
+@keyframes blur {
+  from { filter: blur(2px);}
+  to   { filter: blur(0);  }
+}

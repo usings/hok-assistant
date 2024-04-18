@@ -1,0 +1,26 @@
+:root{
+  color: #FFFFFFBB;
+  font-size: 4px;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body{
+  font-size: 16px;
+  background-color: #0B0D11;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #333333;
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #666666;
+}
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}

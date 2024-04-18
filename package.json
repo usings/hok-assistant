@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.10.0"
+  },
+  "scripts": {
+    "build": "pnpm --filter website build"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/node": "^20.12.7",
+    "@witheslint/core": "^0.16.0",
+    "@witheslint/preset-solid": "^0.16.0",
+    "eslint": "^8.57.0",
+    "lefthook": "^1.6.10",
+    "tslib": "^2.6.2",
+    "typescript": "5.3.3"
+  }
+}
