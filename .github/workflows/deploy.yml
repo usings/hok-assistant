@@ -41,5 +41,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "hoking"
-          entrypoint: "https://deno.land/std@0.217.0/http/file_server.ts"
+          entrypoint: "./entrypoint.ts"
           root: "website/dist"
