@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { Router } from '@solidjs/router'
 import { render } from 'solid-js/web'
-import { Footer, Header } from '@/boilerplate'
+import { Footer, Header } from '@/components/boilerplate'
 import { routes } from '@/routes'
 import 'uno.css'
 import '@unocss/reset/tailwind.css'
@@ -15,5 +15,4 @@ render(() => (
     </Router>
     <Footer />
   </section>
-)
-, document.querySelector('#root')!)
+), document.querySelector('#root')!)

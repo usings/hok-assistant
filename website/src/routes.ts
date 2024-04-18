@@ -1,6 +1,6 @@
 import type { RouteDefinition } from '@solidjs/router'
 import { lazy } from 'solid-js'
-import Home from './views/home'
+import Home from '@/views/home'
 
 export const routes: RouteDefinition[] = [
   {
