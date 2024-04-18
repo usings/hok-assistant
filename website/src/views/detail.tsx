@@ -20,7 +20,9 @@ interface DetailVO {
   updatetime: string
 }
 
-async function request(_name: string, type: string) {
+type Channel = 'iwx' | 'awx' | 'iqq' | 'aqq'
+
+async function request(_name: string, type: Channel) {
   const resp = await ofetch('https://www.sapi.run/hero/select.php', {
     method: 'get',
     query: { hero: _name, type },
@@ -30,7 +32,7 @@ async function request(_name: string, type: string) {
   return resp.data as DetailVO
 }
 
-const fetcher = cache((name: string): Promise<DetailVO[]> => {
+const fetcher = cache((name: string) => {
   return Promise.all([
     request(name, 'iwx'),
     request(name, 'awx'),
