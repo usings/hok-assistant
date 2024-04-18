@@ -1,8 +1,14 @@
-import type { HeroVO } from '@/declare/types'
 import type { Component } from 'solid-js'
 import { cache, useNavigate } from '@solidjs/router'
 import { ofetch } from 'ofetch'
 import { createResource, For, Match, Switch } from 'solid-js'
+
+interface HeroVO {
+  cname: string
+  ename: string
+  iconUrl: string
+  title: string
+}
 
 const fetcher = cache(async () => {
   const resp = await ofetch('https://www.sapi.run/hero/getHeroList.php', {
@@ -10,7 +16,7 @@ const fetcher = cache(async () => {
     retry: 3,
     retryDelay: 200,
   })
-  return resp.data.reverse()
+  return resp.data.reverse() as HeroVO[]
 }, 'hero')
 
 export const Home: Component = () => {

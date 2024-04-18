@@ -3,7 +3,7 @@ import { cache, useSearchParams } from '@solidjs/router'
 import { ofetch } from 'ofetch'
 import { createResource, For, Match, Show, Switch } from 'solid-js'
 
-interface DetailInfo {
+interface DetailVO {
   uid: string
   name: string
   alias: string
@@ -27,10 +27,10 @@ async function request(_name: string, type: string) {
     retry: 3,
     retryDelay: 200,
   })
-  return resp.data as DetailInfo
+  return resp.data as DetailVO
 }
 
-const fetcher = cache((name: string): Promise<DetailInfo[]> => {
+const fetcher = cache((name: string): Promise<DetailVO[]> => {
   return Promise.all([
     request(name, 'iwx'),
     request(name, 'awx'),
@@ -41,7 +41,7 @@ const fetcher = cache((name: string): Promise<DetailInfo[]> => {
 
 export const Detail: Component = () => {
   const [searchParams] = useSearchParams()
-  const [scores, { refetch }] = createResource<DetailInfo[], string>(searchParams.name, fetcher)
+  const [scores, { refetch }] = createResource<DetailVO[], string>(searchParams.name, fetcher)
 
   return (
     <section class="flex-grow min-h-0 flex flex-col justify-start gap-20">
