@@ -24,7 +24,7 @@ export default defineConfig({
       },
     }), // https://github.com/unplugin/unplugin-icons
     autoImport({
-      dts: 'src/declare/imports.d.ts',
+      dts: 'src/imports.d.ts',
       resolvers: [
         iconsResolver({ prefix: false, enabledCollections: ['icon'] }),
       ],

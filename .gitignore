@@ -9,3 +9,6 @@ dist
 
 # IDE-specific
 .idea
+
+# generated type shims
+website/src/imports.d.ts
