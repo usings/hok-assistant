@@ -10,6 +10,7 @@
   "dependencies": {
     "@ark-ui/solid": "^2.2.0",
     "@solidjs/router": "^0.13.2",
+    "disable-devtool": "^0.3.7",
     "ofetch": "^1.3.4",
     "solid-js": "^1.8.16"
   },

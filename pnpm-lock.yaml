@@ -44,6 +44,9 @@ importers:
       '@solidjs/router':
         specifier: ^0.13.2
         version: 0.13.2(solid-js@1.8.16)
+      disable-devtool:
+        specifier: ^0.3.7
+        version: 0.3.7
       ofetch:
         specifier: ^1.3.4
         version: 1.3.4
@@ -2778,6 +2781,10 @@ packages:
     dependencies:
       path-type: 4.0.0
     dev: true
+
+  /disable-devtool@0.3.7:
+    resolution: {integrity: sha512-xF5uyEpBhDuy7b4Bb88GQG4IB+2CwuQfkJK9vB/ym+85NQp/f7Wc6hnT40Jy2SkKvEf1xAKpvJUJU3LykTXxKg==}
+    dev: false
 
   /doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}

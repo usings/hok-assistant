@@ -3,7 +3,7 @@ import type { Component } from 'solid-js'
 export const Header: Component = () => {
   return (
     <header class="flex-shrink-0 ">
-      <a href="/" class="flex items-center gap-8 transition">
+      <a href="/" class="flex items-center gap-8 transition w-fit">
         <IconDust width={40} height={40} class="flex-shrink-0" />
         <span class="text-24 select-none">HOK Assistant</span>
       </a>
