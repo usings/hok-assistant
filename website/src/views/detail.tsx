@@ -47,7 +47,7 @@ export const Detail: Component = () => {
 
   return (
     <section class="flex-grow min-h-0 flex flex-col justify-start gap-20">
-      <div class="w-full aspect-[16/7] bg-layer rounded-8 overflow-hidden flex-shrink-0">
+      <div class="w-full aspect-[16/7] bg-base rounded-8 overflow-hidden flex-shrink-0">
         <img class="object-cover animate-blur" src={`https://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/${searchParams.id}/${searchParams.id}-bigskin-1.jpg`} alt="" />
       </div>
 
@@ -55,7 +55,10 @@ export const Detail: Component = () => {
         <ul class="grid md:grid-cols-2 gap-20 flex-grow min-h-0">
           <For each={scores()}>
             {(score, idx) => (
-              <li class="relative p-16 bg-layer border border-gray/4 rounded-8 flex flex-col gap-16 overflow-hidden transition animate-in animate-backwards fade-in slide-in-bottom-4" style={{ 'animation-delay': `${idx() * 0.1}s` }}>
+              <li
+                class="relative p-16 bg-base border-base rounded-8 flex flex-col gap-16 overflow-hidden transition animate-in animate-backwards fade-in slide-in-bottom-4"
+                style={{ 'animation-delay': `${idx() * 0.1}s` }}
+              >
                 <Show
                   when={idx() % 2 === 1}
                   fallback={<IconApple class="absolute top--8 right-0 w-80 h-80 opacity-10" />}
@@ -63,23 +66,23 @@ export const Detail: Component = () => {
                   <IconAndroid class="absolute top--30 right-0 w-85 h-85 opacity-10 rotate-180" />
                 </Show>
                 <h3 class="text-18 flex flex-col select-none">
-                  <span class="bg-#182723 color-#6FFFAF w-fit px-8 rounded-4">{score.platform.split('-')[1]}</span>
-                  <time class=" color-text/20 text-12 select-none underline decoration-dashed">{score.updatetime}</time>
+                  <span class="bg-gray/10 color-green dark:(bg-#182723 color-#6FFFAF) w-fit px-8 rounded-4">{score.platform.split('-')[1]}</span>
+                  <time class="opacity-40 text-12 select-none underline decoration-dashed">{score.updatetime}</time>
                 </h3>
                 <div class="flex flex-col gap-8">
                   <div class="flex items-center gap-4 w-full">
                     <IconLocation class="w-16 h-16"></IconLocation>
-                    <span class="flex-grow color-text/40">{score.province}</span>
+                    <span class="flex-grow opacity-60">{score.province}</span>
                     <span class="w-40 text-right">{score.provincePower}</span>
                   </div>
                   <div class="flex items-center gap-4 w-full">
                     <IconLocation class="w-16 h-16"></IconLocation>
-                    <span class="flex-grow color-text/40">{score.city}</span>
+                    <span class="flex-grow opacity-60">{score.city}</span>
                     <span class="w-40 text-right">{score.cityPower}</span>
                   </div>
                   <div class="flex items-center gap-4 w-full">
                     <IconLocation class="w-16 h-16"></IconLocation>
-                    <span class="flex-grow color-text/40">{score.area}</span>
+                    <span class="flex-grow opacity-60">{score.area}</span>
                     <span class="w-40 text-right">{score.areaPower}</span>
                   </div>
                 </div>

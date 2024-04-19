@@ -5,7 +5,7 @@ export const Header: Component = () => {
     <header class="flex-shrink-0 ">
       <a href="/" class="flex items-center gap-8 transition">
         <IconDust width={40} height={40} class="flex-shrink-0" />
-        <span class="text-24 color-text select-none hover:color-white">HOK Assistant</span>
+        <span class="text-24 select-none">HOK Assistant</span>
       </a>
     </header>
   )
@@ -13,8 +13,8 @@ export const Header: Component = () => {
 
 export const Footer: Component = () => {
   return (
-    <footer class="flex-shrink-0 flex items-center justify-end gap-8 ">
-      <span class="text-12 color-text select-none">Made with  ❤️</span>
+    <footer class="flex-shrink-0 flex items-end justify-end gap-8 h-40">
+      <span class="text-12 select-none">Made with  ❤️</span>
     </footer>
   )
 }

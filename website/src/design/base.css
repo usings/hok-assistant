@@ -1,13 +1,26 @@
 :root{
-  color: #FFFFFFBB;
+  --color-layer: #fff;
+  --color-scrollbar: #EEEEEEBB;
+  --color-scrollbar-active: #CCCCCCBB;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-layer: #0B0C11;
+    --color-scrollbar: #333333BB;
+    --color-scrollbar-active: #444444BB;
+  }
+}
+
+html{
   font-size: 4px;
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
 body{
   font-size: 16px;
-  background-color: #0B0D11;
+  background-color: var(--color-layer);
 }
 
 *::-webkit-scrollbar {
@@ -15,11 +28,11 @@ body{
   height: 6px;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: #333333;
+  background-color: var(--color-scrollbar);
   border-radius: 4px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #666666;
+  background-color: var(--color-scrollbar-active);
 }
 *::-webkit-scrollbar-track {
   background-color: transparent;
