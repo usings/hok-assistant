@@ -34,7 +34,9 @@ export const Home: Component = () => {
                 class="flex items-center gap-8 bg-base hv-base border-base rounded-8 p-8 cursor-pointer transition animate-in animate-backwards fade-in slide-in-bottom-4"
                 style={{ 'animation-delay': `${idx() * 0.005}s` }}
               >
-                <img class="w-40 rounded-full select-none animate-blur" src={hero.iconUrl} alt={hero.cname} loading="lazy" />
+                <div class="w-40 aspect-square bg-base rounded-full overflow-hidden flex-shrink-0">
+                  <img class="object-cover animate-blur animate-blur" src={hero.iconUrl} alt={hero.cname} loading="lazy" />
+                </div>
                 <p class="flex flex-col">
                   <span class="text-16">{hero.cname}</span>
                   <span class="text-12 opacity-60 select-none">{hero.title}</span>

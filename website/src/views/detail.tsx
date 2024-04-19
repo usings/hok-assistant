@@ -52,7 +52,7 @@ export const Detail: Component = () => {
       </div>
 
       <Switch fallback={(
-        <ul class="grid md:grid-cols-2 gap-20 flex-grow min-h-0">
+        <ul class="grid md:grid-cols-2 gap-20">
           <For each={scores()}>
             {(score, idx) => (
               <li
