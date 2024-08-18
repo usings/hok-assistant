@@ -11,7 +11,7 @@ interface HeroVO {
 }
 
 const fetcher = cache(async () => {
-  const resp = await ofetch('https://www.sapi.run/hero/getHeroList.php', {
+  const resp = await ofetch('https://api.xxoo.team/hero/getHeroList.php', {
     method: 'get',
     retry: 3,
     retryDelay: 200,
@@ -30,12 +30,12 @@ export const Home: Component = () => {
           <For each={heroes()}>
             {(hero, idx) => (
               <li
-                onClick={() => navigate(`/detail?id=${hero.ename}&name=${hero.cname}`)}
+                onClick={() => navigate(`/detail?id=${hero.ename}`)}
                 class="flex items-center gap-8 bg-base hv-base border-base rounded-8 p-8 cursor-pointer transition animate-in animate-backwards fade-in slide-in-bottom-4"
                 style={{ 'animation-delay': `${idx() * 0.005}s` }}
               >
                 <div class="w-40 aspect-square bg-base rounded-full overflow-hidden flex-shrink-0">
-                  <img class="object-cover animate-blur animate-blur" src={hero.iconUrl} alt={hero.cname} loading="lazy" />
+                  <img class="object-cover animate-blur" src={hero.iconUrl} alt={hero.cname} loading="lazy" />
                 </div>
                 <p class="flex flex-col">
                   <span class="text-16">{hero.cname}</span>

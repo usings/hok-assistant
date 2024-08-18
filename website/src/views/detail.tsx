@@ -7,7 +7,7 @@ interface DetailVO {
   uid: string
   name: string
   alias: string
-  platform: string
+  platform: Channel
   photo: string
   area: string
   areaPower: string
@@ -19,31 +19,34 @@ interface DetailVO {
   stamp: string
   updatetime: string
 }
-
 type Channel = 'iwx' | 'awx' | 'iqq' | 'aqq'
 
-async function request(_name: string, type: Channel) {
-  const resp = await ofetch('https://www.sapi.run/hero/select.php', {
+async function request(id: string, type: Channel) {
+  const resp = await ofetch('https://api.xxoo.team/hero/getHeroById.php', {
     method: 'get',
-    query: { hero: _name, type },
+    query: { heroId: id, type },
     retry: 3,
     retryDelay: 200,
   })
+  resp.data.platform = type
   return resp.data as DetailVO
 }
 
-const fetcher = cache((name: string) => {
+const fetcher = cache((id: string) => {
   return Promise.all([
-    request(name, 'iwx'),
-    request(name, 'awx'),
-    request(name, 'iqq'),
-    request(name, 'aqq'),
+    request(id, 'iwx'),
+    request(id, 'awx'),
+    request(id, 'iqq'),
+    request(id, 'aqq'),
   ])
 }, 'detail')
 
 export const Detail: Component = () => {
   const [searchParams] = useSearchParams()
-  const [scores, { refetch }] = createResource<DetailVO[], string>(searchParams.name, fetcher)
+  const [scores, { refetch }] = createResource<DetailVO[], string>(searchParams.id, fetcher)
+
+  const isWeChat = (channel: Channel) => ['iwx', 'awx'].includes(channel)
+  const isIOS = (channel: Channel) => ['iwx', 'iqq'].includes(channel)
 
   return (
     <section class="flex-grow min-h-0 flex flex-col justify-start gap-20">
@@ -52,24 +55,26 @@ export const Detail: Component = () => {
       </div>
 
       <Switch fallback={(
-        <ul class="grid md:grid-cols-2 gap-20">
+        <ul class="grid md:grid-cols-2 gap-12">
           <For each={scores()}>
             {(score, idx) => (
               <li
-                class="relative p-16 bg-base border-base rounded-8 flex flex-col gap-16 overflow-hidden transition animate-in animate-backwards fade-in slide-in-bottom-4"
+                class="relative p-16 bg-base border-base rounded-8 flex flex-col gap-12 overflow-hidden transition animate-in animate-backwards fade-in slide-in-bottom-4"
                 style={{ 'animation-delay': `${idx() * 0.1}s` }}
               >
                 <Show
-                  when={idx() % 2 === 1}
-                  fallback={<IconApple class="absolute top--8 right-0 w-80 h-80 opacity-10" />}
+                  when={!isIOS(score.platform)}
+                  fallback={<IconApple class="absolute top--8 right-0 w-70 h-70 opacity-10" />}
                 >
                   <IconAndroid class="absolute top--30 right-0 w-85 h-85 opacity-10 rotate-180" />
                 </Show>
-                <h3 class="text-18 flex flex-col select-none">
-                  <span class="bg-gray/10 color-green dark:(bg-#182723 color-#6FFFAF) w-fit px-8 rounded-4">{score.platform.split('-')[1]}</span>
-                  <time class="opacity-40 text-12 select-none underline decoration-dashed">{score.updatetime}</time>
+                <h3 class="flex flex-col select-none">
+                  <span class="bg-gray/10 text-18 color-green dark:(bg-#182723 color-#6FFFAF) w-fit px-8 rounded-4">
+                    {isWeChat(score.platform) ? 'WeChat' : 'QQ'}
+                  </span>
+                  <time class="opacity-20 text-12 select-none underline decoration-dashed">{score.updatetime}</time>
                 </h3>
-                <div class="flex flex-col gap-8">
+                <div class="flex flex-col gap-8 text-14">
                   <div class="flex items-center gap-4 w-full">
                     <IconLocation class="w-16 h-16"></IconLocation>
                     <span class="flex-grow opacity-60">{score.province}</span>
@@ -98,13 +103,13 @@ export const Detail: Component = () => {
           </p>
         </Match>
         <Match when={scores.error}>
-          <p
+          <button
             onClick={() => refetch()}
             class="flex-grow flex flex-col justify-center items-center backdrop-blur-md cursor-pointer"
           >
             <IconError width={60} height={60} />
             <span>retry</span>
-          </p>
+          </button>
         </Match>
       </Switch>
     </section>

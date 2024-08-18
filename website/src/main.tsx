@@ -5,8 +5,6 @@ import { render } from 'solid-js/web'
 import { Footer, Header } from '@/components/boilerplate'
 import { routes } from '@/routes'
 import '@/design'
-import '@unocss/reset/tailwind.css'
-import 'uno.css'
 
 if (import.meta.env.PROD) DisableDevtool()
 
